@@ -1,0 +1,16 @@
+@import 'tailwindcss/base';
+/* Write your own custom base styles here */
+
+/* Start purging... */
+@import 'tailwindcss/components';
+/* Stop purging. */
+
+/* Start purging... */
+@import 'tailwindcss/utilities';
+/* Stop purging. */
+
+/* Your own custom utilities */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
