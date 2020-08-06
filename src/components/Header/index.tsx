@@ -1,30 +1,41 @@
-import React, { memo } from 'react';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { Container, Wrapper, LeftNav, RightNav } from './styles';
-import { BancoInter } from '../../assets/images';
-import Button from '../Button';
-import AccountDropdown from './AccountDropdown';
-import { User } from './Header';
-import Gradient from './Gradient';
+import { Container, GithubLogo, SearchForm } from './styles'
 
-const Header: React.FC = () => {
-  const user: User = { name: 'Luke Morales' };
+import { ThemeName } from '../../styles/themes'
+
+interface Props {
+  themeName: ThemeName
+  setThemeName: (newName: ThemeName) => void
+}
+
+const Header: React.FC<Props> = ({ themeName, setThemeName }) => {
+  const [search, setSearch] = useState('')
+  const navigate = useNavigate()
+
+  function handleSubmit(event: React.FormEvent) {
+    event.preventDefault()
+
+    navigate('/' + search.toLowerCase().trim())
+  }
+
+  function toggleTheme() {
+    setThemeName(themeName === 'light' ? 'dark' : 'light')
+  }
 
   return (
     <Container>
-      <Wrapper>
-        <LeftNav>
-          <BancoInter />
-          Internet Banking
-        </LeftNav>
-        <RightNav>
-          <Button variant="secondary">Simulador Renda Fixa</Button>
-          <AccountDropdown user={user} />
-        </RightNav>
-      </Wrapper>
-      <Gradient />
+      <GithubLogo onClick={toggleTheme} />
+      <SearchForm onSubmit={handleSubmit}>
+        <input
+          placeholder="Enter Username or Repo..."
+          value={search}
+          onChange={(e) => setSearch(e.currentTarget.value)}
+        />
+      </SearchForm>
     </Container>
-  );
-};
+  )
+}
 
-export default memo(Header);
+export default Header

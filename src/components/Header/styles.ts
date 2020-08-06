@@ -1,39 +1,40 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
+import { FaGithub } from 'react-icons/fa'
 
-export const Container = styled.header`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background: ${({ theme }) => theme.colors.background};
-`;
-
-export const Wrapper = styled.div`
-  max-width: 100rem;
-  height: 10.4rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const LeftNav = styled.div`
+export const Container = styled.div`
   display: flex;
   align-items: center;
+  background: var(--header);
+  padding: 11px 16px;
+`
 
-  > svg {
-    max-width: 11.2rem;
-    height: auto;
-    margin: 0 2.4rem 1.1rem 0;
+export const GithubLogo = styled(FaGithub)`
+  fill: var(--logo);
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
   }
+`
 
-  font-size: ${({ theme }) => theme.fontSizes.large};
-  font-weight: 700;
-`;
+export const SearchForm = styled.form`
+  padding-left: 16px;
+  width: 100%;
 
-export const RightNav = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex: 1;
-`;
+  input {
+    background: var(--search);
+    outline: 0;
+    border-radius: 6px;
+    padding: 7px 12px;
+    width: 100%;
+
+    &:focus {
+      width: 318px;
+    }
+
+    transition: width 0.2s ease-out, color 0.2s ease-out;
+  }
+`
